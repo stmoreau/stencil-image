@@ -17,7 +17,7 @@ export class MyComponent {
 
   componentWillLoad() {
     this.element.style.setProperty('--image', `url('${this.publicPath}dummy.jpeg')`);   
-}
+  }
   
 
   private getText(): string {
