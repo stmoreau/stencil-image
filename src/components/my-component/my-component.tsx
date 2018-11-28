@@ -1,32 +1,30 @@
-import { Component, Prop } from '@stencil/core';
+import { Component, Prop, Element } from '@stencil/core';
 import { format } from '../../utils/utils';
 
 @Component({
   tag: 'my-component',
   styleUrl: 'my-component.css',
+  assetsDir: './',
   shadow: true
 })
 export class MyComponent {
-  /**
-   * The first name
-   */
+  @Element() private element: HTMLElement;
   @Prop() first: string;
-
-  /**
-   * The middle name
-   */
   @Prop() middle: string;
-
-  /**
-   * The last name
-   */
   @Prop() last: string;
+
+  @Prop({context: 'publicPath'}) private publicPath: string;
+
+  componentWillLoad() {
+    this.element.style.setProperty('--image', `url('${this.publicPath}dummy.jpeg')`);   
+}
+  
 
   private getText(): string {
     return format(this.first, this.middle, this.last);
   }
 
   render() {
-    return <div>Hello, World! I'm {this.getText()}</div>;
+    return <div>Hello, World! I'm {this.publicPath} {this.getText()}</div>;
   }
 }

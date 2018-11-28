@@ -1,4 +1,4 @@
 div {
     color: blue;
-    background-image: url('../images/dummy.jpeg');
+    background-image: var(--image);
 }
