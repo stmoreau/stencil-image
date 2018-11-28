@@ -1,1 +1,5 @@
 
+div {
+    color: blue;
+    background-image: url('./dummy.jpeg');
+}
